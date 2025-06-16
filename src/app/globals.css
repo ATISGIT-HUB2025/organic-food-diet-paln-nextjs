@@ -135,3 +135,7 @@ body {
   height: 250%;
   background-color: rgba(255, 255, 255, 0.1); /* Keep a slight effect */
 }
+
+::placeholder {
+  font-size: 12px;
+}

@@ -27,7 +27,6 @@ const HowWorkMealPlan = () => {
   return (
     <section className="py-16 bg-white text-center px-4">
       {/* Heading */}
-
       <div className="relative z-10 text-center mb-12 px-4">
         <div className="section-title-6 text-center pt-5">
           <span className="uppercase text-sm text-gray-500 tracking-wider">
