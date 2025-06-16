@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import {
   FaBars,
   FaTimes,
@@ -63,7 +65,7 @@ const Navbar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const dropdownTimeout = useRef(null);
-
+  const pathname = usePathname();
   const handleMouseEnter = () => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
     setDropdownOpen(true);
@@ -167,16 +169,30 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6 relative">
-            <Link href="/" className="hover:text-green-600 font-semibold">
+            <Link
+              href="/"
+              className={`font-semibold ${
+                pathname === "/" ? "text-green-600" : "hover:text-green-600"
+              }`}
+            >
               Home
             </Link>
             <Link
               href="about-us"
-              className="hover:text-green-600 font-semibold"
+              className={`font-semibold ${
+                pathname === "/about-us"
+                  ? "text-green-600"
+                  : "hover:text-green-600"
+              }`}
             >
               About Us
             </Link>
-            <Link href="blog" className="hover:text-green-600 font-semibold">
+            <Link
+              href="blog"
+              className={`font-semibold ${
+                pathname === "/blog" ? "text-green-600" : "hover:text-green-600"
+              }`}
+            >
               Blog
             </Link>
 
@@ -186,7 +202,13 @@ const Navbar = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <button className="flex items-center gap-1 font-semibold hover:text-green-600">
+              <button
+                className={`font-semibold flex items-center gap-1 ${
+                  pathname === "/meal-plan-details"
+                    ? "text-green-600 "
+                    : "hover:text-green-600"
+                }`}
+              >
                 Our Meal Plan <FaCaretDown className="text-xs mt-0.5" />
               </button>
 
@@ -221,7 +243,11 @@ const Navbar = () => {
 
             <Link
               href="contact-us"
-              className="hover:text-green-600 font-semibold"
+              className={`font-semibold ${
+                pathname === "/contact-us"
+                  ? "text-green-600"
+                  : "hover:text-green-600"
+              }`}
             >
               Contact Us
             </Link>
